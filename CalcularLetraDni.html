@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Introduzca el Dni</label>
+    <br>
+    <input type="text" id="dni">
+    <br>
+    <button type="button"  onclick="calculoLetra()">
+        Confirmar
+    </button>
+    <h1 id="h1"></h1>
+
+    //EjercicioB
+
+    <br>
+    <h1>Validacion del ISBN</h1>
+    <label>INTRODUZCA isbn </label>
+    <input type="text" id="cadena"/>
+    <br>
+    <button type="button" onclick="validacionISBN()">
+        Validar ISBN
+    </button>
+    <h1 id="h1"></h1>
+</body>
+<script>
+
+    function validacionISBN(){
+        var cadena = document.getElementById("cadena");
+        var numero = cadena.value;
+        var aux=0;
+        var aux2=0;
+        
+
+        for(var i=0;i<numero.length;i++){
+            aux=(i+1)*(parseInt(numero.charAt(i)));
+            aux2+=aux;
+            console.log(aux2);
+        }
+        if(aux2%11==0){
+            document.getElementById("h1").innerText="ISBN CORRECTO";
+            document.getElementById("h1").style.color="blue";
+        }
+    }
+    function calculoLetra(){
+        var dni=document.getElementById("dni").value;
+        var h1=document.getElementById("h1");
+        var numero=parseInt(dni);
+        
+
+        var letra=(numero-(parseInt(numero/23)*23));
+        var cadena="TRWAGMYFPDXBNJZSQVHLCKET";
+        
+
+        h1.innerText="Letra: "+cadena.charAt(letra);
+
+    }
+</script>
+</html>

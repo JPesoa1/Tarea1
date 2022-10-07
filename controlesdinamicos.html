@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Generar controles dinámicos</h1>
+    <input type="range" id="rango" min="1" max="14" value="1" onchange="crearImagenes()"/>
+    <p id="valorrango">1</p>
+    <div id="capa" >
+			<input type="checkbox"/>2
+			<input type="checkbox"/>2
+			<input type="checkbox"/>2
+			<input type="checkbox"/>2
+			<input type="checkbox"/>2
+		</div>
+</body>
+<script>
+    function crearImagenes(){
+			var capa = document.getElementById("capa");
+			var rango = document.getElementById("rango");
+			document.getElementById("valorrango").innerText = rango.value;
+			var numeroImagenes= parseInt(rango.value);
+			//LIMPIAMOS EL PARENT PARA INCLUIR NUEVAS IMAGENES
+			capa.innerText="";
+			//BUCLE PARA DIBUJAR X IMAGENES
+			for(var i=1; i<=numeroImagenes; i++){
+				//CREAMOS UN OBJETO POR CADA ITERACION	
+				var imagen = document.createElement("img");
+				imagen.style.width="500px";
+				imagen.style.height="300px";
+				//ASIGNAMOS LAS PROPIEDADES QUE DESEEMOS
+				imagen.src="./imagenes/bicho.jpg";
+				//AGREGAMOS AL PARENT EL OBJETO
+				capa.appendChild(imagen);
+				//CREAMOS EVENTO PARA LA IMAGEN
+				imagen.addEventListener("click",function(){
+					this.src="./imagenes/realmadrid.png";
+					//IGUAL QUE TENEMOS APPENDCHILD DE UN
+					var padre=document.getElementById("capa"); 
+					//PARENT, TAMBIEN TENEMOS REMOVECHILD
+					capa.removeChild(this);
+				});
+			}
+			
+			
+    }
+</script>
+</html>
